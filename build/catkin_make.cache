@@ -1,0 +1,2 @@
+assignment1:my_first_package:my_srv:my_srv2:turtlebot_controller
+-DCATKIN_DEVEL_PREFIX=/root/my_ros2/my_ros_ws/devel -DCMAKE_INSTALL_PREFIX=/root/my_ros2/my_ros_ws/install -G Unix Makefiles

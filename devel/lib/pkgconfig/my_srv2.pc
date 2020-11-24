@@ -1,0 +1,8 @@
+prefix=/root/my_ros2/my_ros_ws/devel
+
+Name: my_srv2
+Description: Description of my_srv2
+Version: 0.0.0
+Cflags: -I/root/my_ros2/my_ros_ws/devel/include
+Libs: -L/root/my_ros2/my_ros_ws/devel/lib 
+Requires: 

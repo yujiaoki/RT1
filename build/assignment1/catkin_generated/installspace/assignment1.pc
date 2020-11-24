@@ -1,0 +1,8 @@
+prefix=/root/my_ros2/my_ros_ws/install
+
+Name: assignment1
+Description: Description of assignment1
+Version: 0.0.0
+Cflags: -I/root/my_ros2/my_ros_ws/install/include
+Libs: -L/root/my_ros2/my_ros_ws/install/lib 
+Requires: 
