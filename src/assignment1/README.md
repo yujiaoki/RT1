@@ -26,7 +26,7 @@ rosrun assignment1 assignment1
 ```
 You can run the service node `/random_target` by executing the command:
 ```
-rosrun my_srv2 random_target_server
+rosrun my_srv2 random_target
 ```
 
 
