@@ -8,7 +8,7 @@ the system of connection is indicated like the computational graph of system (rq
 And regarding service nodes, the node `/assignmet1` requests generating new random targets from the service node `/random_target_server` when the distance between current position and target position is less than 0.1. the service node `random_target_server` is generating the new random target each for x and y when it's called from the client of the node `assignment1`.
 
 ## Computational graph of the system
-![the graph of system](/Users/yujiaoki/my_ros2/my_ros_ws/src/assignment1/rosgraph.png )
+![the graph of system](rosgraph.png )
 
 ## instructions about how to run the code
 Of course, you shouldn't forget the command at first:
