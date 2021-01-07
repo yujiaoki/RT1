@@ -50,7 +50,7 @@ The non holonomic robot(gazebo) should be working as following below,
 ## Computational graph of the system
 ![the graph of system](rosgraph.png )
 <!-- ![the graph of system](rosgraph_gmapping_odom.png ) -->
-### Robot behaivors implemented
+## Robot behaivors implemented
 `/Controller` node is composed of 4 states as following below.
 #### state0 - setting random target
 #### state1 - asking user interface
