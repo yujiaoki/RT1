@@ -1,0 +1,8 @@
+prefix=/root/my_ros2/my_ros_ws/install
+
+Name: parameters
+Description: Description of parameters
+Version: 0.0.0
+Cflags: 
+Libs: -L/root/my_ros2/my_ros_ws/install/lib 
+Requires: 

@@ -1,0 +1,8 @@
+prefix=/root/my_ros2/my_ros_ws/devel
+
+Name: robot_description
+Description: Description of robot_description
+Version: 0.0.0
+Cflags: 
+Libs: -L/root/my_ros2/my_ros_ws/devel/lib 
+Requires: 

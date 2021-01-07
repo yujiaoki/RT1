@@ -1,0 +1,8 @@
+prefix=/root/my_ros2/my_ros_ws/devel
+
+Name: gmapping
+Description: Description of gmapping
+Version: 1.4.2
+Cflags: 
+Libs: -L/root/my_ros2/my_ros_ws/devel/lib 
+Requires: 

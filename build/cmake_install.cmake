@@ -126,11 +126,15 @@ endif()
 if(NOT CMAKE_INSTALL_LOCAL_ONLY)
   # Include the install script for each subdirectory.
   include("/root/my_ros2/my_ros_ws/build/gtest/cmake_install.cmake")
-  include("/root/my_ros2/my_ros_ws/build/my_first_package/cmake_install.cmake")
+  include("/root/my_ros2/my_ros_ws/build/slam_gmapping/slam_gmapping/cmake_install.cmake")
   include("/root/my_ros2/my_ros_ws/build/my_srv/cmake_install.cmake")
   include("/root/my_ros2/my_ros_ws/build/my_srv2/cmake_install.cmake")
+  include("/root/my_ros2/my_ros_ws/build/parameters/cmake_install.cmake")
+  include("/root/my_ros2/my_ros_ws/build/slam_gmapping/gmapping/cmake_install.cmake")
   include("/root/my_ros2/my_ros_ws/build/assignment1/cmake_install.cmake")
   include("/root/my_ros2/my_ros_ws/build/turtlebot_controller/cmake_install.cmake")
+  include("/root/my_ros2/my_ros_ws/build/final_assignment/cmake_install.cmake")
+  include("/root/my_ros2/my_ros_ws/build/robot_description/cmake_install.cmake")
 
 endif()
 
