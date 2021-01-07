@@ -38,14 +38,15 @@ def wall_follower_switch(req):
 
 def clbk_laser(msg):
     global regions_,active_
-    regions_ = {
-        'right':  min(min(msg.ranges[0:143]), 10),
-        'fright': min(min(msg.ranges[144:287]), 10),
-        'front':  min(min(msg.ranges[288:431]), 10),
-        'fleft':  min(min(msg.ranges[432:575]), 10),
-        'left':   min(min(msg.ranges[576:713]), 10),
-    }
-    take_action()
+    if active_ :
+        regions_ = {
+            'right':  min(min(msg.ranges[0:143]), 10),
+            'fright': min(min(msg.ranges[144:287]), 10),
+            'front':  min(min(msg.ranges[288:431]), 10),
+            'fleft':  min(min(msg.ranges[432:575]), 10),
+            'left':   min(min(msg.ranges[576:713]), 10),
+        }
+        take_action()
 
 
 def change_state(state):
@@ -120,7 +121,7 @@ def main():
     global pub_, active_
 
     rospy.init_node('reading_laser')
-
+    active_ = False
     pub_ = rospy.Publisher('/cmd_vel', Twist, queue_size=1)
 
     sub = rospy.Subscriber('/scan', LaserScan, clbk_laser)

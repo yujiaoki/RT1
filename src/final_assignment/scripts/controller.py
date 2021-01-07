@@ -60,11 +60,12 @@ state_ = -1
 def clbk_odom(msg):
     global position_, yaw_ 
 
-    # # position
+    #gmapping_odom
 
     # position_ = msg.linear
     # yaw_ = msg.angular.z
 
+    # /odom
     position_ = msg.pose.pose.position
 
     # yaw
@@ -152,14 +153,6 @@ def main():
 
     rate = rospy.Rate(20)
     while not rospy.is_shutdown():
-        # des_x = rospy.get_param('des_pos_x')
-        # des_y = rospy.get_param('des_pos_y')
-        # des_yaw = desired_yaw_
-        # now_x = position_.x
-        # now_y = position_.y
-        # now_yaw = yaw_
-        # err_yaw = normalize_angle(des_yaw - now_yaw)
-        # err_pos = math.sqrt(pow(des_y - now_y,2) + pow(des_x - now_x, 2))
         print("now state" + state_desc_[state_])
         print("Hi! We are reaching the target position: x = " +
             str(desired_position_.x) + ", y = " + str(desired_position_.y))
@@ -172,26 +165,19 @@ def main():
             # reaching the first random target             
             err_pos = math.sqrt(pow(desired_position_.y - position_.y,
                                     2) + pow(desired_position_.x - position_.x, 2))
-            # err_yaw = normalize_angle(desired_yaw_  - yaw_)
             if err_pos < pos_error_allowed :
                 change_state(1)
             # (I don't consider the orientation when the robot arrived at target position)
-            # if err_pos < pos_error_allowed and math.fabs(err_yaw) < yaw_error_allowed_:
-            #     change_state(1)
         elif state_ == 1:  
             # reaching the second requested target                 
             err_pos = math.sqrt(pow(desired_position_.y - position_.y,
                                     2) + pow(desired_position_.x - position_.x, 2))
-            # err_yaw = normalize_angle(desired_yaw_  - yaw_)  
             if err_pos < pos_error_allowed :
                 change_state(2)
-            # if err_pos < pos_error_allowed and math.fabs(err_yaw) < yaw_error_allowed_ :
-            #     change_state(2)
         elif state_ == 2:
             # folloing wall
             err_pos = math.sqrt(pow(desired_position_.y - position_.y,
                                     2) + pow(desired_position_.x - position_.x, 2))
-            # err_yaw = normalize_angle(desired_yaw_  - yaw_)
             """Once the robot exits from the destination position, it registered the robot already exited.
              By this, we can check if the robot went around the map or not when the robot is near the last position"""
             if err_pos >= pos_error_allowed/2:
@@ -199,8 +185,6 @@ def main():
                 continue
             if err_pos < pos_error_allowed and exit_position_:
                 change_state(3)
-            # if err_pos < pos_error_allowed and math.fabs(err_yaw) < yaw_error_allowed_  and exit_position_:
-            #     change_state(3)
         rate.sleep()
     
 if __name__ == '__main__':

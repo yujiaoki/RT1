@@ -21,6 +21,10 @@ The non holonomic robot(gazebo) should be working as following below,
     - Type: `nav_msgs/Odometry`
     - Publisher `node: /gazebo`
     - Subscriber node: `/Controller`
+<!-- - /gmapping_odom
+    - Type: `geometry_msgs/Twist`
+    - Publisher node: `/tf_echo`
+    - Subscriber node: `/Controller` -->
 - /cmd_vel 
     - Type: `geometry_msgs/Twist`
     - Publisher node: `/Controller`,`/wall_follower`
@@ -45,13 +49,13 @@ The non holonomic robot(gazebo) should be working as following below,
 
 ## Computational graph of the system
 ![the graph of system](rosgraph.png )
-
+<!-- ![the graph of system](rosgraph_gmapping_odom.png ) -->
 ### Robot behaivors implemented
-/Controller node is composed of 4 states as following below.
-##### state0 - setting random target
-##### state1 - asking user interface
-##### state2 - start following the external walls
-##### state3 - stop in the last position after the robot runs around the walls (whole map)
+`/Controller` node is composed of 4 states as following below.
+#### state0 - setting random target
+#### state1 - asking user interface
+#### state2 - start following the external walls
+#### state3 - stop in the last position after the robot runs around the walls (whole map)
 
 0. `/Controller` node calls for `/random_target` in order to get random target position among [(-4,-3),(-4,2),(-4,7),(5,-7),(5,-3),(5,1)], and `/Controller `publishes the target position for `/move_base`. After that, the robot starts to move for target.
 
@@ -64,7 +68,7 @@ The non holonomic robot(gazebo) should be working as following below,
 ## Software architecture
 The blue part is user interface. By using this module, I can interact with the robot controller by setting some parameters (in this caes, setting the target position).
 
-The red parts are the ones which implements the actulal robot controller. it processes the inputs comming from gazebo(`/odom`,`/scan`)&user interface and it set a resulting linear and angular velocity for the robot(`/cmd_vel`). In detail, the robot gets the map by using SLAM and plans the path from the current positino to the target position by grobal Path planning(dijkstra) and the robot is moving while avoiding obstacles by using local path planning.
+The red parts are the ones which implements the actulal robot controller. it processes the inputs comming from gazebo(`/odom`,`/scan`)&user interface and it set a resulting linear and angular velocity for the robot(`/cmd_vel`). And `Controller` node is managing  current position and target position. In detail, the robot gets the map by using SLAM and plans the path from the current position to the target position by grobal Path planning(dijkstra) and the robot is moving while avoiding obstacles by using local path planning.
 
 All the green components represent the section of the system which simulate the robot and its physical interaction with the environment.
 
