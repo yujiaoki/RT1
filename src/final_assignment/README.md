@@ -19,7 +19,7 @@ The non holonomic robot(gazebo) should be working as following below,
 ### Topic
 - /odom
     - Type: `nav_msgs/Odometry`
-    - Publisher `node: /gazebo`
+    - Publisher node: `/gazebo`
     - Subscriber node: `/Controller`
 <!-- - /gmapping_odom
     - Type: `geometry_msgs/Twist`
