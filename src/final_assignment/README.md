@@ -52,8 +52,8 @@ The non holonomic robot(gazebo) should be working as following below,
 <!-- ![the graph of system](rosgraph_gmapping_odom.png ) -->
 ## Robot behaivors implemented
 `/Controller` node is composed of 4 states as following below.
-#### state0 - setting random target
-#### state1 - asking user interface
+#### state0 - set random target
+#### state1 - ask user interface
 #### state2 - start following the external walls
 #### state3 - stop in the last position after the robot runs around the walls (whole map)
 
@@ -78,9 +78,11 @@ All the green components represent the section of the system which simulate the 
 ## System’s limitations and possible improvements
 
 1. Possiblity of changing path on the way
+
 In this system,the robot is moving for target while creating the map by SLAM algorithm, so the path created when the robot is in the initial position is not always optimal path because there is a possibility the robot doesn't notice obstacles. So the robot sometimes changes path, in some case it contributes to detour. And the point is that we already know how the map is. That's why I think I can improve creating optimal path by using amcl which estimate the current position by pattern matching with pre-existing maps and lasar data. 
 
 2. Limited to static environment
+
 In this system, the robot cannot avoid moving obstacles. But in real environments, we always need to consider moving obstacles. So I have to learn the algorithm and technique which enables robot to move safely even in dynamic environments.
 
 
